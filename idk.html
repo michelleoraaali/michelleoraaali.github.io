@@ -3,7 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-.container {
+.imagecontainer {
     position: relative;
     width: 50%;
 }
@@ -28,11 +28,11 @@
   text-align: center;
 }
 
-.container:hover .image {
+.imagecontainer:hover .image {
   opacity: 0.3;
 }
 
-.container:hover .middle {
+.imagecontainer:hover .middle {
   opacity: 1;
 }
 
@@ -42,6 +42,16 @@
   font-size: 16px;
   padding: 16px 32px;
 }
+
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 32px;
+  background-color: #0C9FA8;
+  color: white;
+  cursor: pointer;
+}
+
 </style>
 </head>
 <body>
@@ -49,11 +59,10 @@
 <h2>Opacity with Box</h2>
 <p>Hover over the image to see the effect.</p>
 
-<div class="container">
+<div class="imagecontainer">
   <img src="images/pic1small.jpg" alt="Avatar" class="image" style="width:100%">
   <div class="middle">
-    <div class="text">Why</div>
-    <a href=""></a>
+    <div class="btn"><a href="https://leb2.github.io/MuSyc/dist/" class="btn" role="button">Website</a></div>
   </div>
 </div>
   
