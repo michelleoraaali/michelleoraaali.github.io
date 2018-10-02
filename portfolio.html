@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-{
+* {
     box-sizing: border-box;
 }
 
@@ -10,129 +12,94 @@ body {
     font-family: Arial;
 }
 
-.header {
-    text-align: center;
-    padding: 32px;
-}
-
-.row {
-    display: -ms-flexbox; /* IE10 */
-    display: flex;
-    -ms-flex-wrap: wrap; /* IE10 */
-    flex-wrap: wrap;
-    padding: 0 4px;
-}
-
-/* Create four equal columns that sits next to each other */
+/* The grid: Four equal columns that floats next to each other */
 .column {
-    -ms-flex: 25%; /* IE10 */
-    flex: 25%;
-    max-width: 25%;
-    padding: 0 4px;
+    float: left;
+    width: 25%;
+    padding: 10px;
 }
 
+/* Style the images inside the grid */
 .column img {
-    margin-top: 8px;
-    vertical-align: middle;
+    opacity: 0.8; 
+    cursor: pointer; 
 }
 
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 800px) {
-    .column {
-        -ms-flex: 50%;
-        flex: 50%;
-        max-width: 50%;
-    }
+.column img:hover {
+    opacity: 1;
 }
 
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-    .column {
-        -ms-flex: 100%;
-        flex: 100%;
-        max-width: 100%;
-    }
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* The expanding image container */
+.container {
+    position: relative;
+    display: none;
+}
+
+/* Expanding image text */
+#imgtext {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-size: 20px;
+}
+
+/* Closable button inside the expanded image */
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
 }
 </style>
+</head>
+<body>
 
-  </head>
-  <body>
+<div style="text-align:center">
+  <h2>Tabbed Image Gallery</h2>
+  <p>Click on the images below:</p>
+</div>
 
-     <div class="row"> 
+<!-- The four columns -->
+<div class="row">
   <div class="column">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
+    <img src="images/pic1.jpg" alt="Nature" style="width:100%" onclick="myFunction(this);">
   </div>
   <div class="column">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-  </div> 
-  <div class="column">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
+    <img src="images/pic1.jpg" alt="Snow" style="width:100%" onclick="myFunction(this);">
   </div>
   <div class="column">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-    <img src="images/pic1.jpg">
-
+    <img src="images/pic1.jpg" alt="Mountains" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img src="images/pic1.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
   </div>
 </div>
 
-<!--         <div>
-        <h4>Art/Music Projects</h4>
+<div class="container">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <img id="expandedImg" style="width:100%">
+  <div id="imgtext"></div>
+</div>
 
-        <div class="row">
-
-          <div class="col-md-4">
-            <div class="well well-sm">
-              <h3>MuSyC</h3>
-              <p>Music-Colour Synaesthesia Visualizer</p>
-              <p>
-                <a href="https://leb2.github.io/MuSyc/dist/" target="_blank" class="btn btn-primary btn-sm" role="button">Website</a>
-                <a href="https://github.com/michelleoraaali/MuSyc" target="_blank" class="btn btn-default btn-sm" role="button">Code</a>
-              </p>
-            </div>
-          </div>
-
-          
-      </div> 
-    </div> -->
-
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-
-<!-- Default Statcounter code for Website http://michelleoraaali.github.io -->
-<script type="text/javascript">
-var sc_project=11767541; 
-var sc_invisible=1; 
-var sc_security="9bd5479f"; 
+<script>
+function myFunction(imgs) {
+    var expandImg = document.getElementById("expandedImg");
+    var imgText = document.getElementById("imgtext");
+    expandImg.src = imgs.src;
+    imgText.innerHTML = imgs.alt;
+    expandImg.parentElement.style.display = "block";
+}
 </script>
-<script type="text/javascript"
-src="https://www.statcounter.com/counter/counter.js" async></script>
-<noscript><div class="statcounter"><a title="Web Analytics"
-href="http://statcounter.com/" target="_blank"><img class="statcounter"
-src="//c.statcounter.com/11767541/0/9bd5479f/1/" alt="Web
-Analytics"></a></div></noscript>
-<!-- End of Statcounter Code -->
-  </body>
+
+</body>
 </html>
